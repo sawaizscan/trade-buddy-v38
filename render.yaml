@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: trade-buddy-v38
+    runtime: python
+    repo: https://github.com/sawaizscan/trade-buddy
+    branch: main
+    buildCommand: pip install -r deploy/requirements.txt
+    startCommand: python deploy/monitor.py
+    healthCheckPath: /api/account
+    envVars:
+      - key: PORT
+        value: "10000"
